@@ -24,7 +24,7 @@ class MainActivity : HikizanActivity() {
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
 
-
+        initUI()
     }
 
     override fun initIntent() {
@@ -39,7 +39,6 @@ class MainActivity : HikizanActivity() {
 
             vpMain.apply {
                 adapter = viewPagerAdapter
-                isUserInputEnabled = false
             }
 
             TabLayoutMediator(tabMain, vpMain) { tab, position ->

@@ -1,49 +1,44 @@
-package com.hikizan.movietvapp.presentation.movie
+package com.hikizan.movietvapp.presentation.tv
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.base.HikizanFragment
 import com.hikizan.movietvapp.data.movietv.Resource
-import com.hikizan.movietvapp.databinding.FragmentMovieBinding
-import com.hikizan.movietvapp.presentation.movie.adapter.MovieAdapter
+import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
+import com.hikizan.movietvapp.presentation.tv.adapter.TvShowAdapter
 import com.hikizan.movietvapp.utils.ext.showDefaultState
+import com.hikizan.movietvapp.utils.ext.showEmptyState
 import com.hikizan.movietvapp.utils.ext.showErrorState
 import com.hikizan.movietvapp.utils.ext.showLoadingState
 import com.hikizan.movietvapp.utils.ext.showToast
-import com.hikizan.movietvapp.viewmodel.MovieViewModel
+import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MovieFragment : HikizanFragment() {
+class TvshowFragment : HikizanFragment() {
 
-    private var _binding: FragmentMovieBinding? = null
+    private var _binding: FragmentTvshowBinding? = null
     private val binding get() = _binding
-
-    private val movieViewModel: MovieViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMovieBinding.inflate(layoutInflater, container, false)
+        _binding = FragmentTvshowBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
 
-    private val movieAdapter = MovieAdapter()
+    private val tvShowViewModel: TvShowViewModel by viewModel()
+    private val tvShowAdapter = TvShowAdapter()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity != null) {
-            initUI()
-            initProcess()
-            initObservers()
-        }
+        initUI()
+        initObservers()
     }
 
     override fun initIntent() {
@@ -51,47 +46,40 @@ class MovieFragment : HikizanFragment() {
 
     override fun initUI() {
         /*binding?.apply {
-            msvMovie.showErrorState(
-                message = getString(R.string.message_error_state),
-                action = Pair(getString(R.string.action_retry)) {
-                    loadingState()
-                }
-            )
+            msvTv.showEmptyState()
         }*/
 
-        binding?.rvMovie?.apply {
+        binding?.rvTv?.apply {
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
-            adapter = movieAdapter
+            adapter = tvShowAdapter
         }
 
-        movieAdapter.onItemClick = { selectData ->
-            // Intent coming soon
-            context?.showToast(selectData.title)
+        tvShowAdapter.onItemClick = { selectData ->
+            context?.showToast(selectData.name)
         }
     }
 
     override fun initProcess() {
-        movieViewModel.getMovies()
     }
 
     override fun initObservers() {
         binding?.apply {
-            movieViewModel.moviesResult.observe(viewLifecycleOwner) { movies ->
-                if (movies != null) {
-                    when (movies) {
+            tvShowViewModel.tvShows.observe(viewLifecycleOwner) { tvShows ->
+                if (tvShows != null) {
+                    when (tvShows) {
                         is Resource.Loading -> {
-                            msvMovie.showLoadingState()
+                            msvTv.showLoadingState()
                         }
                         is Resource.Success -> {
-                            msvMovie.showDefaultState()
-                            movieAdapter.setData(movies.data)
+                            msvTv.showDefaultState()
+                            tvShowAdapter.setData(tvShows.data)
                         }
                         is Resource.Error -> {
-                            msvMovie.showErrorState(
-                                message = movies.message ?: getString(R.string.message_error_state),
+                            msvTv.showErrorState(
+                                message = tvShows.message ?: getString(R.string.message_error_state),
                                 action = Pair(getString(R.string.action_retry)) {
-                                    movieViewModel.getMovies()
+                                    context?.showToast(tvShows.message.toString())
                                 }
                             )
                         }

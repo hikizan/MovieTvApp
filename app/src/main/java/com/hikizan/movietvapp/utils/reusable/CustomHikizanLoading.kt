@@ -21,7 +21,7 @@ class CustomHikizanLoading(context: Context) : Dialog(context) {
 
         val view: View = View.inflate(
             context,
-            R.layout.layout_hikizan_loading,
+            R.layout.hikizan_loading_state_layout,
             null
         )
 

@@ -16,7 +16,7 @@
             android:id="@+id/imgPoster"
             android:layout_width="110dp"
             android:layout_height="160dp"
-            app:scaleType="fitXY"
+            android:scaleType="fitXY"
             app:srcCompat="@drawable/img_poster"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -24,15 +24,15 @@
 
         <TextView
             android:id="@+id/tvItemTitle"
-            android:layout_width="@dimen/dimen_0dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dimen_10dp"
-            android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginEnd="@dimen/dimen_10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:ellipsize="end"
             app:maxLines="2"
             tools:text="@string/label_title"
-            android:textSize="@dimen/text_size_18sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgPoster"
@@ -40,7 +40,7 @@
 
         <TextView
             android:id="@+id/tvItemReleaseDate"
-            android:layout_width="@dimen/dimen_0dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:text="@string/label_release_date"
@@ -50,9 +50,11 @@
 
         <TextView
             android:id="@+id/tvItemOverview"
-            android:layout_width="@dimen/dimen_0dp"
+            android:layout_width="0dp"
             android:layout_height="0dp"
-            app:maxLines="3"
+            android:ellipsize="end"
+            android:maxLines="4"
+            android:layout_marginBottom="10dp"
             android:text="@string/label_overview"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/tvItemReleaseDate"
