@@ -49,5 +49,9 @@ fun Double?.orZero(): Double {
     return this ?: 0.0
 }
 
+fun String?.orEmptyString(): String {
+    return this ?: ""
+}
+
 fun Context.showToast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

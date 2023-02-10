@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.hikizan.movietvapp.data.movietv.local.model.entity.MovieItemEntity
 import com.hikizan.movietvapp.data.movietv.local.model.entity.TvShowItemEntity
 import kotlinx.coroutines.flow.Flow
@@ -21,4 +22,10 @@ interface MovieTvDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = TvShowItemEntity::class)
     suspend fun insertTvShows(tvShows: List<TvShowItemEntity>)
+
+    @Update
+    fun updateFavoriteMovie(movie: MovieItemEntity)
+
+    @Update
+    fun updateFavoriteTvShow(tvShow: TvShowItemEntity)
 }

@@ -52,4 +52,32 @@ class RemoteDataSource(private val movieTvApiClient: MovieTvApiClient) {
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getDetailMovie(movieId: Int): Flow<ApiResponseResult<MovieItemResponse>> {
+        return flow {
+            try {
+                val detailMovieResponse =
+                    movieTvApiClient.getMovie(movieId, BuildConfig.API_KEY)
+
+                emit(ApiResponseResult.Success(detailMovieResponse))
+            } catch (e: Exception) {
+                emit(ApiResponseResult.Error(e.toString()))
+                Log.e(TAG, "getDetailMovie: $e")
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailTvShow(tvId: Int): Flow<ApiResponseResult<TvShowItemResponse>> {
+        return flow {
+            try {
+                val detailTvShowResponse =
+                    movieTvApiClient.getTvShow(tvId, BuildConfig.API_KEY)
+
+                emit(ApiResponseResult.Success(detailTvShowResponse))
+            } catch (e: Exception) {
+                emit(ApiResponseResult.Error(e.toString()))
+                Log.e(TAG, "getDetailTvShow: $e")
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }

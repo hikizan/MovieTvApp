@@ -11,7 +11,6 @@ import com.hikizan.movietvapp.data.movietv.Resource
 import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
 import com.hikizan.movietvapp.presentation.tv.adapter.TvShowAdapter
 import com.hikizan.movietvapp.utils.ext.showDefaultState
-import com.hikizan.movietvapp.utils.ext.showEmptyState
 import com.hikizan.movietvapp.utils.ext.showErrorState
 import com.hikizan.movietvapp.utils.ext.showLoadingState
 import com.hikizan.movietvapp.utils.ext.showToast
@@ -57,6 +56,7 @@ class TvshowFragment : HikizanFragment() {
 
         tvShowAdapter.onItemClick = { selectData ->
             context?.showToast(selectData.name)
+            DetailTvShowsActivity.start(requireContext(), selectData)
         }
     }
 
@@ -93,5 +93,4 @@ class TvshowFragment : HikizanFragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

@@ -18,4 +18,14 @@ class LocalDataSource(private val movieTvDao: MovieTvDao) {
 
     suspend fun insertTvShows(tvShows: List<TvShowItemEntity>) =
         movieTvDao.insertTvShows(tvShows)
+
+    fun setFavoriteMovie(movie: MovieItemEntity, newState: Boolean) {
+        movie.isFavorite = newState
+        movieTvDao.updateFavoriteMovie(movie)
+    }
+
+    fun setFavoriteTvShow(tvShow: TvShowItemEntity, newState: Boolean) {
+        tvShow.isFavorite = newState
+        movieTvDao.updateFavoriteTvShow(tvShow)
+    }
 }
