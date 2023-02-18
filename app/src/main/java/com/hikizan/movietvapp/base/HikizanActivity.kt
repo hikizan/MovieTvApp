@@ -21,6 +21,7 @@ abstract class HikizanActivity : AppCompatActivity() {
 
     abstract fun initIntent()
     abstract fun initUI()
+    abstract fun initAction()
     abstract fun initProcess()
     abstract fun initObservers()
 }

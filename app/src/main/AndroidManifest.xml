@@ -17,6 +17,9 @@
         android:theme="@style/Theme.MovieTvApp"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.favorite.FavoriteActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.main.MainActivity"
             android:exported="true">
             <intent-filter>

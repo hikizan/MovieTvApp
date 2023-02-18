@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".presentation.main.MainActivity">
 
@@ -12,11 +11,27 @@
         android:id="@+id/tabMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@android:color/transparent"
         app:tabTextColor="?attr/colorPrimary" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpMain"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tabMain" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:foregroundGravity="top"
+        app:fabSize="normal"
+        app:srcCompat="@drawable/ic_favorite"
+        app:tint="@android:color/holo_red_dark"
+        android:contentDescription="@string/action_favorite_desc" />
+</RelativeLayout>

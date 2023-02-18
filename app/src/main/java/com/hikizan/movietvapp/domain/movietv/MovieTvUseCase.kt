@@ -8,4 +8,8 @@ import kotlinx.coroutines.flow.Flow
 interface MovieTvUseCase {
     fun getMovies(): Flow<Resource<List<MovieItem>>>
     fun getTvShows(): Flow<Resource<List<TvShowItem>>>
+    fun getFavoriteMovies(): Flow<List<MovieItem>>
+    fun getFavoriteTvShows(): Flow<List<TvShowItem>>
+    fun setFavoriteMovie(movieItem: MovieItem, state: Boolean)
+    fun setFavoriteTvShow(tvShowItem: TvShowItem, state: Boolean)
 }

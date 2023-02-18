@@ -5,6 +5,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.base.HikizanActivity
 import com.hikizan.movietvapp.databinding.ActivityMainBinding
+import com.hikizan.movietvapp.presentation.favorite.FavoriteActivity
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter
 
 class MainActivity : HikizanActivity() {
@@ -25,6 +26,7 @@ class MainActivity : HikizanActivity() {
         setContentView(binding!!.root)
 
         initUI()
+        initAction()
     }
 
     override fun initIntent() {
@@ -42,8 +44,16 @@ class MainActivity : HikizanActivity() {
             }
 
             TabLayoutMediator(tabMain, vpMain) { tab, position ->
-                tab.text =tabTitles[position]
+                tab.text = tabTitles[position]
             }.attach()
+        }
+    }
+
+    override fun initAction() {
+        binding?.apply {
+            fabFavorite.setOnClickListener {
+                FavoriteActivity.start(this@MainActivity)
+            }
         }
     }
 

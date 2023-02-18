@@ -49,3 +49,18 @@ fun MovieItemEntity.mapToDomain() =
         posterPath = posterPath.orEmpty(),
         isFavorite = isFavorite ?: false
     )
+
+fun MovieItem.mapToEntities() =
+    MovieItemEntity(
+        movieId = id.orZero(),
+        originalTitle = originalTitle.orEmpty(),
+        backdropPath = backdropPath.orEmpty(),
+        overview = overview.orEmpty(),
+        releaseDate = releaseDate.orEmpty(),
+        popularity = popularity.orZero(),
+        voteAverage = voteAverage.orZero(),
+        title = title.orEmpty(),
+        voteCount = voteCount.orZero(),
+        posterPath = posterPath.orEmpty(),
+        isFavorite = isFavorite ?: false
+    )

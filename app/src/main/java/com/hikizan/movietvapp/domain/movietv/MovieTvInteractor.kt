@@ -15,4 +15,20 @@ class MovieTvInteractor(private val repository: MovieTvRepositoryImpl) : MovieTv
     override fun getTvShows(): Flow<Resource<List<TvShowItem>>> {
         return repository.getTvShows()
     }
+
+    override fun getFavoriteMovies(): Flow<List<MovieItem>> {
+        return repository.getFavoriteMovies()
+    }
+
+    override fun getFavoriteTvShows(): Flow<List<TvShowItem>> {
+        return repository.getFavoriteTvShows()
+    }
+
+    override fun setFavoriteMovie(movieItem: MovieItem, state: Boolean) {
+        return repository.setFavoriteMovie(movieItem, state)
+    }
+
+    override fun setFavoriteTvShow(tvShowItem: TvShowItem, state: Boolean) {
+        return repository.setFavoriteTvShow(tvShowItem, state)
+    }
 }

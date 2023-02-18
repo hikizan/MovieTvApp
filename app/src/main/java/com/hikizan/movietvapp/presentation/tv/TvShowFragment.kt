@@ -60,6 +60,9 @@ class TvshowFragment : HikizanFragment() {
         }
     }
 
+    override fun initAction() {
+    }
+
     override fun initProcess() {
     }
 
