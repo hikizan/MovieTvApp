@@ -3,7 +3,7 @@ package com.hikizan.movietvapp.presentation.main
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.HikizanActivity
+import com.hikizan.movietvapp.core.base.HikizanActivity
 import com.hikizan.movietvapp.databinding.ActivityMainBinding
 import com.hikizan.movietvapp.presentation.favorite.FavoriteActivity
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="label_title">Title</string>
+    <string name="label_release_date">Release Date</string>
+    <string name="label_overview">Overview</string>
+
+    <string name="message_error_state">Whoops! Something went wrong</string>
+    <string name="message_empty_state">No Results Found</string>
+
+    <string name="action_retry">Retry</string>
+</resources>

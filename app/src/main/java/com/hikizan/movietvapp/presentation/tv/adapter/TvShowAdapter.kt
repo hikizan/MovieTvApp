@@ -7,8 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.databinding.ItemMovietvListBinding
-import com.hikizan.movietvapp.domain.movietv.model.response.TvShowItem
-import com.hikizan.movietvapp.utils.constants.AppConstants
+import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
+import com.hikizan.movietvapp.core.utils.constants.AppConstants
 
 class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.ListViewHolder>() {
 

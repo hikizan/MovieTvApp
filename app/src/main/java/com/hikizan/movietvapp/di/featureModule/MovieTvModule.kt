@@ -1,7 +1,7 @@
 package com.hikizan.movietvapp.di.featureModule
 
-import com.hikizan.movietvapp.domain.movietv.MovieTvInteractor
-import com.hikizan.movietvapp.domain.movietv.MovieTvUseCase
+import com.hikizan.movietvapp.core.domain.movietv.MovieTvInteractor
+import com.hikizan.movietvapp.core.domain.movietv.MovieTvUseCase
 import com.hikizan.movietvapp.viewmodel.FavoriteViewModel
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
