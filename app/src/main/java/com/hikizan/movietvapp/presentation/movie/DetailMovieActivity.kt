@@ -7,12 +7,12 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.HikizanActivity
+import com.hikizan.movietvapp.core.base.HikizanActivity
 import com.hikizan.movietvapp.databinding.ActivityDetailMovieBinding
-import com.hikizan.movietvapp.domain.movietv.model.response.MovieItem
-import com.hikizan.movietvapp.utils.constants.AppConstants
-import com.hikizan.movietvapp.utils.constants.BundleKeys
-import com.hikizan.movietvapp.utils.ext.orEmptyString
+import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
+import com.hikizan.movietvapp.core.utils.constants.AppConstants
+import com.hikizan.movietvapp.core.utils.constants.BundleKeys
+import com.hikizan.movietvapp.core.utils.ext.orEmptyString
 import com.hikizan.movietvapp.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

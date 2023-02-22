@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.HikizanFragment
-import com.hikizan.movietvapp.data.movietv.Resource
+import com.hikizan.movietvapp.core.base.HikizanFragment
+import com.hikizan.movietvapp.core.data.movietv.Resource
 import com.hikizan.movietvapp.databinding.FragmentMovieBinding
 import com.hikizan.movietvapp.presentation.movie.adapter.MovieAdapter
 import com.hikizan.movietvapp.utils.ext.showDefaultState

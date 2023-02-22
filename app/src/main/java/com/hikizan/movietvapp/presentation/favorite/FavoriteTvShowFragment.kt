@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.hikizan.movietvapp.base.HikizanFragment
+import com.hikizan.movietvapp.core.base.HikizanFragment
 import com.hikizan.movietvapp.databinding.FragmentFavoriteTvShowBinding
 import com.hikizan.movietvapp.presentation.tv.DetailTvShowsActivity
 import com.hikizan.movietvapp.presentation.tv.adapter.TvShowAdapter

@@ -7,7 +7,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.HikizanActivity
+import com.hikizan.movietvapp.core.base.HikizanActivity
+import com.hikizan.movietvapp.core.utils.ext.orEmptyString
 import com.hikizan.movietvapp.databinding.LayoutToolbarBinding
 import com.kennyc.view.MultiStateView
 
@@ -43,18 +44,6 @@ fun MultiStateView.showErrorState(
 
         btnError?.setOnClickListener { pair.second.invoke() }
     }
-}
-
-fun Int?.orZero(): Int {
-    return this ?: 0
-}
-
-fun Double?.orZero(): Double {
-    return this ?: 0.0
-}
-
-fun String?.orEmptyString(): String {
-    return this ?: ""
 }
 
 fun Context.showToast(message: CharSequence) =
