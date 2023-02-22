@@ -14,6 +14,7 @@ import com.hikizan.movietvapp.utils.AppExecutors
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.flow.map
+import java.util.concurrent.Executors
 
 class MovieTvRepository(
     private val remoteDataSource: RemoteDataSource,
@@ -30,7 +31,7 @@ class MovieTvRepository(
             }
 
             override fun shouldFetch(data: List<MovieItem>?): Boolean =
-                true
+                data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponseResult<List<MovieItemResponse>>> {
                 return remoteDataSource.getMovies()
@@ -51,9 +52,8 @@ class MovieTvRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<TvShowItem>?): Boolean {
-                return true
-            }
+            override fun shouldFetch(data: List<TvShowItem>?): Boolean =
+                data == null || data.isEmpty()
 
             override suspend fun createCall(): Flow<ApiResponseResult<List<TvShowItemResponse>>> {
                 return remoteDataSource.getTvShows()
@@ -65,4 +65,33 @@ class MovieTvRepository(
             }
         }.asFlow()
 
+    override fun getFavoriteMovies(): Flow<List<MovieItem>> {
+        return localDataSource.getFavoriteMovies().map { entityList ->
+            entityList.map { it.mapToDomain() }
+        }
+    }
+
+    override fun getFavoriteTvShows(): Flow<List<TvShowItem>> {
+        return localDataSource.getFavoriteTvShows().map { entityList ->
+            entityList.map { it.mapToDomain() }
+        }
+    }
+
+    override fun setFavoriteMovie(movieItem: MovieItem, state: Boolean) {
+        Executors.newSingleThreadExecutor().execute {
+            localDataSource.setFavoriteMovie(
+                movieItem.mapToEntities(),
+                state
+            )
+        }
+    }
+
+    override fun setFavoriteTvShow(tvShowItem: TvShowItem, state: Boolean) {
+        appExecutors.diskIO().execute {
+            localDataSource.setFavoriteTvShow(
+                tvShowItem.mapToEntities(),
+                state
+            )
+        }
+    }
 }

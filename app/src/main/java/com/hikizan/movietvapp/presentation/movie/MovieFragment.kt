@@ -64,10 +64,12 @@ class MovieFragment : HikizanFragment() {
         }
 
         movieAdapter.onItemClick = { selectData ->
-            // Intent coming soon
             context?.showToast(selectData.title)
             DetailMovieActivity.start(requireContext(), selectData)
         }
+    }
+
+    override fun initAction() {
     }
 
     override fun initProcess() {

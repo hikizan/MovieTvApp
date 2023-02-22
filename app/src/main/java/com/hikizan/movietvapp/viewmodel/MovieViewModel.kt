@@ -3,7 +3,6 @@ package com.hikizan.movietvapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.hikizan.movietvapp.data.movietv.Resource
 import com.hikizan.movietvapp.domain.movietv.MovieTvUseCase
@@ -24,4 +23,7 @@ class MovieViewModel(private val movieTvUseCase: MovieTvUseCase) : ViewModel() {
             movieTvUseCase.getMovies()
         }
     }
+
+    fun setFavoriteMovie(movieItem: MovieItem, isFavorite: Boolean) =
+        movieTvUseCase.setFavoriteMovie(movieItem, isFavorite)
 }

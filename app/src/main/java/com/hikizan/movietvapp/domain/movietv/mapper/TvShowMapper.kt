@@ -34,3 +34,18 @@ fun TvShowItemResponse.mapToEntities() =
         posterPath = posterPath.orEmpty(),
         isFavorite = false
     )
+
+fun TvShowItem.mapToEntities() =
+    TvShowItemEntity(
+        tvShowId = id.orZero(),
+        originalName = originalName.orEmpty(),
+        backdropPath = backDropPath.orEmpty(),
+        firstAirDate = firstAirDate.orEmpty(),
+        overview = overview.orEmpty(),
+        popularity = popularity.orZero(),
+        voteAverage = voteAverage.orZero(),
+        name = name.orEmpty(),
+        voteCount = voteCount.orZero(),
+        posterPath = posterPath.orEmpty(),
+        isFavorite = isFavorite
+    )

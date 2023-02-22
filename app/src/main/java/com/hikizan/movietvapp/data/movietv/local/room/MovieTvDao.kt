@@ -23,6 +23,12 @@ interface MovieTvDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE, entity = TvShowItemEntity::class)
     suspend fun insertTvShows(tvShows: List<TvShowItemEntity>)
 
+    @Query("SELECT * FROM movieItem WHERE isFavorite = 1")
+    fun getFavoriteMovies(): Flow<List<MovieItemEntity>>
+
+    @Query("SELECT * FROM tvShowItem WHERE isFavorite = 1")
+    fun getFavoriteTvShows(): Flow<List<TvShowItemEntity>>
+
     @Update
     fun updateFavoriteMovie(movie: MovieItemEntity)
 
