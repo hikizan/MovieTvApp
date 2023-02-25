@@ -1,11 +1,32 @@
-package com.hikizan.movietvapp.utils.ext
+package com.hikizan.movietvapp.core.utils.ext
 
 import android.content.Context
+import android.graphics.Color
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.hikizan.movietvapp.R
+import com.hikizan.movietvapp.core.R
+import com.hikizan.movietvapp.core.base.HikizanActivity
+import com.hikizan.movietvapp.core.databinding.LayoutToolbarBinding
 import com.kennyc.view.MultiStateView
+
+fun HikizanActivity.setupHikizanToolbar(
+    toolbarLayout: LayoutToolbarBinding,
+    title: String,
+    isChild: Boolean = false,
+    isFavoriteVisible: Boolean = false
+) {
+    with(toolbarLayout) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.title = title.orEmptyString()
+        supportActionBar?.setDisplayHomeAsUpEnabled(isChild)
+        toolbar.setTitleTextColor(Color.WHITE)
+        if (isFavoriteVisible) {
+            imgFavorite.visibility = View.VISIBLE
+        }
+    }
+}
 
 fun MultiStateView.showDefaultState() {
     viewState = MultiStateView.ViewState.CONTENT
@@ -43,21 +64,3 @@ fun MultiStateView.showErrorState(
 
 fun Context.showToast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-/*
-fun HikizanActivity.setupHikizanToolbar(
-    toolbarLayout: LayoutToolbarBinding,
-    title: String,
-    isChild: Boolean = false,
-    isFavoriteVisible: Boolean = false
-) {
-    with(toolbarLayout) {
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = title.orEmptyString()
-        supportActionBar?.setDisplayHomeAsUpEnabled(isChild)
-        toolbar.setTitleTextColor(Color.WHITE)
-        if (isFavoriteVisible) {
-            imgFavorite.visibility = View.VISIBLE
-        }
-    }
-}*/

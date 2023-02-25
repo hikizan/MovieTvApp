@@ -1,20 +1,23 @@
-package com.hikizan.movietvapp.presentation.favorite
+package com.hikizan.movietvapp.favorite.presentation.favorite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.core.base.HikizanFragment
-import com.hikizan.movietvapp.databinding.FragmentFavoriteTvShowBinding
-import com.hikizan.movietvapp.presentation.tv.DetailTvShowsActivity
-import com.hikizan.movietvapp.presentation.tv.adapter.TvShowAdapter
-import com.hikizan.movietvapp.utils.ext.showDefaultState
-import com.hikizan.movietvapp.utils.ext.showEmptyState
-import com.hikizan.movietvapp.viewmodel.FavoriteViewModel
-import kotlinx.android.synthetic.main.fragment_favorite_tv_show.msvFavoriteTv
-import kotlinx.android.synthetic.main.fragment_favorite_tv_show.rvFavoriteTv
+import com.hikizan.movietvapp.favorite.databinding.FragmentFavoriteTvShowBinding
+import com.hikizan.movietvapp.core.presentation.tv.adapter.TvShowAdapter
+import com.hikizan.movietvapp.core.utils.constants.BundleKeys
+import com.hikizan.movietvapp.core.utils.ext.showDefaultState
+import com.hikizan.movietvapp.core.utils.ext.showEmptyState
+import com.hikizan.movietvapp.core.utils.ext.showToast
+import com.hikizan.movietvapp.favorite.R
+import com.hikizan.movietvapp.favorite.di.featuremodule.favoriteModule
+import com.hikizan.movietvapp.favorite.viewmodel.FavoriteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavoriteTvShowFragment : HikizanFragment() {
 
@@ -48,7 +51,7 @@ class FavoriteTvShowFragment : HikizanFragment() {
     }
 
     override fun initUI() {
-        binding.apply {
+        binding?.apply {
             rvFavoriteTv.apply {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
@@ -59,15 +62,26 @@ class FavoriteTvShowFragment : HikizanFragment() {
 
     override fun initAction() {
         favoriteTvShowAdapter.onItemClick = { selectData ->
-            DetailTvShowsActivity.start(requireContext(), selectData)
+//            DetailTvShowsActivity.start(requireContext(), selectData)
+            try {
+                val moveToDetailPage = Intent(
+                    requireContext(),
+                    Class.forName(getString(R.string.module_app_detail_tv))
+                )
+                moveToDetailPage.putExtra(BundleKeys.TV_SHOW_EXTRA_DATA, selectData)
+                startActivity(moveToDetailPage)
+            } catch (e: Exception) {
+                context?.showToast(e.toString())
+            }
         }
     }
 
     override fun initProcess() {
+        loadKoinModules(favoriteModule)
     }
 
     override fun initObservers() {
-        binding.apply {
+        binding?.apply {
             favoriteViewModel.getFavoriteTvShows.observe(viewLifecycleOwner) { favoriteTvShows ->
                 if (favoriteTvShows.isNullOrEmpty()) {
                     msvFavoriteTv.showEmptyState()

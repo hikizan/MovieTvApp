@@ -1,11 +1,13 @@
 package com.hikizan.movietvapp.presentation.main
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.core.base.HikizanActivity
+import com.hikizan.movietvapp.core.utils.ext.showToast
 import com.hikizan.movietvapp.databinding.ActivityMainBinding
-import com.hikizan.movietvapp.presentation.favorite.FavoriteActivity
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter
 
 class MainActivity : HikizanActivity() {
@@ -52,7 +54,19 @@ class MainActivity : HikizanActivity() {
     override fun initAction() {
         binding?.apply {
             fabFavorite.setOnClickListener {
-                FavoriteActivity.start(this@MainActivity)
+                try {
+                    //                com.hikizan.movietvapp.favorite.presentation.favorite.favorite.FavoriteActivity.start(this@MainActivity)
+                    /*val favoriteUri = Uri.parse("movietvapp://favorite")
+                    startActivity(Intent(Intent.ACTION_VIEW, favoriteUri))*/
+
+                    val moveToFavoritePage = Intent()
+                    moveToFavoritePage.setClassName(this@MainActivity, "com.hikizan.movietvapp.favorite.presentation.favorite.FavoriteActivity")
+//                moveToFavoritePage.putExtra("ExtraInt", 3) // Test intent for Dynamic feature
+                    startActivity(moveToFavoritePage)
+                } catch (e: Exception) {
+                    this@MainActivity.showToast(e.toString())
+                }
+
             }
         }
     }

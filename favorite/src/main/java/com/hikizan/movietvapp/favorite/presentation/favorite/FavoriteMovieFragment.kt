@@ -1,20 +1,22 @@
-package com.hikizan.movietvapp.presentation.favorite
+package com.hikizan.movietvapp.favorite.presentation.favorite
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.core.base.HikizanFragment
-import com.hikizan.movietvapp.databinding.FragmentFavoriteMovieBinding
-import com.hikizan.movietvapp.presentation.movie.DetailMovieActivity
-import com.hikizan.movietvapp.presentation.movie.adapter.MovieAdapter
-import com.hikizan.movietvapp.utils.ext.showDefaultState
-import com.hikizan.movietvapp.utils.ext.showEmptyState
-import com.hikizan.movietvapp.viewmodel.FavoriteViewModel
-import kotlinx.android.synthetic.main.fragment_favorite_movie.msvFavoriteMovie
-import kotlinx.android.synthetic.main.fragment_favorite_movie.rvFavoriteMovie
+import com.hikizan.movietvapp.core.presentation.movie.adapter.MovieAdapter
+import com.hikizan.movietvapp.core.utils.constants.BundleKeys
+import com.hikizan.movietvapp.core.utils.ext.showDefaultState
+import com.hikizan.movietvapp.core.utils.ext.showEmptyState
+import com.hikizan.movietvapp.core.utils.ext.showToast
+import com.hikizan.movietvapp.favorite.databinding.FragmentFavoriteMovieBinding
+import com.hikizan.movietvapp.favorite.di.featuremodule.favoriteModule
+import com.hikizan.movietvapp.favorite.viewmodel.FavoriteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
 class FavoriteMovieFragment : HikizanFragment() {
 
@@ -48,7 +50,7 @@ class FavoriteMovieFragment : HikizanFragment() {
     }
 
     override fun initUI() {
-        binding.apply {
+        binding?.apply {
             rvFavoriteMovie.apply {
                 layoutManager = LinearLayoutManager(context)
                 setHasFixedSize(true)
@@ -59,15 +61,25 @@ class FavoriteMovieFragment : HikizanFragment() {
 
     override fun initAction() {
         favoriteMovieAdapter.onItemClick = { selectData ->
-            DetailMovieActivity.start(requireContext(), selectData)
+            try {
+                val moveToDetailPage = Intent(
+                    requireContext(),
+                    Class.forName("com.hikizan.movietvapp.presentation.movie.DetailMovieActivity")
+                )
+                moveToDetailPage.putExtra(BundleKeys.MOVIE_EXTRA_DATA, selectData)
+                startActivity(moveToDetailPage)
+            } catch (e: Exception) {
+                context?.showToast(e.toString())
+            }
         }
     }
 
     override fun initProcess() {
+        loadKoinModules(favoriteModule)
     }
 
     override fun initObservers() {
-        binding.apply {
+        binding?.apply {
             favoriteViewModel.getFavoriteMovies.observe(viewLifecycleOwner) { favoriteMovies ->
                 if (favoriteMovies.isNullOrEmpty()) {
                     msvFavoriteMovie.showEmptyState()

@@ -13,7 +13,7 @@ import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.orEmptyString
-import com.hikizan.movietvapp.utils.ext.setupHikizanToolbar
+import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

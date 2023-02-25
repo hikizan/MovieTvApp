@@ -1,21 +1,22 @@
-package com.hikizan.movietvapp.presentation.movie.adapter
+package com.hikizan.movietvapp.core.presentation.tv.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.databinding.ItemMovietvListBinding
-import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
+import com.hikizan.movietvapp.core.R
+import com.hikizan.movietvapp.core.databinding.ItemMovietvListBinding
+import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
+import com.hikizan.movietvapp.core.presentation.tv.adapter.TvShowAdapter.ListViewHolder
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
+class TvShowAdapter : RecyclerView.Adapter<ListViewHolder>() {
 
-    private var listData = ArrayList<MovieItem>()
-    var onItemClick: ((MovieItem) -> Unit)? = null
+    private var listData = ArrayList<TvShowItem>()
+    var onItemClick: ((TvShowItem) -> Unit)? = null
 
-    fun setData(newListData: List<MovieItem>?) {
+    fun setData(newListData: List<TvShowItem>?) {
         if (newListData == null) return
         listData.clear()
         listData.addAll(newListData)
@@ -37,13 +38,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.ListViewHolder>() {
     inner class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val binding = ItemMovietvListBinding.bind(itemView)
 
-        fun bind(data: MovieItem) {
+        fun bind(data: TvShowItem) {
             with(binding) {
                 Glide.with(itemView.context)
                     .load(AppConstants.POSTER_PATH + data.posterPath)
                     .into(imgPoster)
-                tvItemTitle.text = data.title
-                tvItemReleaseDate.text = data.releaseDate
+                tvItemTitle.text = data.name
+                tvItemReleaseDate.text = data.firstAirDate
                 tvItemOverview.text = data.overview
             }
         }

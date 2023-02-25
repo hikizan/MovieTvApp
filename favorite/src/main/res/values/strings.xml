@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_movie">Movie</string>
+    <string name="title_tv">Tv Show</string>
+    <string name="title_favorite_list_page">Favorite List Page</string>
+    <string name="module_app_detail_movie">com.hikizan.movietvapp.DetailMovieActivity</string>
+    <string name="module_app_detail_tv">com.hikizan.movietvapp.presentation.tv.DetailTvShowsActivity</string>
+</resources>

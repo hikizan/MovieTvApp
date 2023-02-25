@@ -1,4 +1,4 @@
-package com.hikizan.movietvapp.viewmodel
+package com.hikizan.movietvapp.favorite.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
