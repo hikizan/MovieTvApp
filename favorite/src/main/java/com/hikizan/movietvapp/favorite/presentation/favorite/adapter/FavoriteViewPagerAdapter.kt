@@ -1,11 +1,11 @@
-package com.hikizan.movietvapp.presentation.favorite.adapter
+package com.hikizan.movietvapp.favorite.presentation.favorite.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.hikizan.movietvapp.presentation.favorite.FavoriteMovieFragment
-import com.hikizan.movietvapp.presentation.favorite.FavoriteTvShowFragment
+import com.hikizan.movietvapp.favorite.presentation.favorite.FavoriteMovieFragment
+import com.hikizan.movietvapp.favorite.presentation.favorite.FavoriteTvShowFragment
 
 class FavoriteViewPagerAdapter(
     fragmentManager: FragmentManager,

@@ -9,7 +9,7 @@ import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.core.base.HikizanFragment
 import com.hikizan.movietvapp.core.data.movietv.Resource
 import com.hikizan.movietvapp.databinding.FragmentMovieBinding
-import com.hikizan.movietvapp.presentation.movie.adapter.MovieAdapter
+import com.hikizan.movietvapp.core.presentation.movie.adapter.MovieAdapter
 import com.hikizan.movietvapp.utils.ext.showDefaultState
 import com.hikizan.movietvapp.utils.ext.showErrorState
 import com.hikizan.movietvapp.utils.ext.showLoadingState
