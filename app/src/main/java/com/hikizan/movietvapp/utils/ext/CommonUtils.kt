@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import com.hikizan.movietvapp.R
+import com.hikizan.movietvapp.core.R
 import com.kennyc.view.MultiStateView
 
 fun MultiStateView.showDefaultState() {

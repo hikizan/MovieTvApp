@@ -37,6 +37,7 @@ class TvshowFragment : HikizanFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         initUI()
+        initProcess()
         initObservers()
     }
 
@@ -64,11 +65,12 @@ class TvshowFragment : HikizanFragment() {
     }
 
     override fun initProcess() {
+        tvShowViewModel.getTvShows()
     }
 
     override fun initObservers() {
         binding?.apply {
-            tvShowViewModel.tvShows.observe(viewLifecycleOwner) { tvShows ->
+            tvShowViewModel.tvShowsResult.observe(viewLifecycleOwner) { tvShows ->
                 if (tvShows != null) {
                     when (tvShows) {
                         is Resource.Loading -> {
@@ -82,7 +84,8 @@ class TvshowFragment : HikizanFragment() {
                             msvTv.showErrorState(
                                 message = tvShows.message ?: getString(R.string.message_error_state),
                                 action = Pair(getString(R.string.action_retry)) {
-                                    context?.showToast(tvShows.message.toString())
+//                                    context?.showToast(tvShows.message.toString())
+                                    tvShowViewModel.getTvShows()
                                 }
                             )
                         }

@@ -15,7 +15,6 @@ class MovieViewModel(private val movieTvUseCase: MovieTvUseCase) : ViewModel() {
     private val _moviesResult: MutableLiveData<Resource<List<MovieItem>>> = MutableLiveData()
 
     val moviesResult: LiveData<Resource<List<MovieItem>>> get() = _moviesResult
-//        movieTvUseCase.getMovies().asLiveData()
 
     fun getMovies() = viewModelScope.launch {
         _moviesResult.value = Resource.Loading()
