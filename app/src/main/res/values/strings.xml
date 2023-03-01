@@ -9,6 +9,7 @@
 
     <string name="title_movie">Movie</string>
     <string name="title_tv">Tv Show</string>
+    <string name="title_app">MovieTv App</string>
 
     <string name="message_error_state">Whoops! Something went wrong</string>
     <string name="message_empty_state">No Results Found</string>

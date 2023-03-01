@@ -1,5 +1,6 @@
 package com.hikizan.movietvapp.presentation.main
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +12,14 @@ import com.hikizan.movietvapp.databinding.ActivityMainBinding
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter
 
 class MainActivity : HikizanActivity() {
+
+    companion object {
+        fun start(context: Context) {
+            context.startActivity(
+                Intent(context, MainActivity::class.java)
+            )
+        }
+    }
 
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding

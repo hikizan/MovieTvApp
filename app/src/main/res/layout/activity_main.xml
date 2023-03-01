@@ -27,11 +27,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="?attr/colorPrimary"
+        android:contentDescription="@string/action_favorite_desc"
         android:foregroundGravity="top"
         app:fabSize="normal"
         app:srcCompat="@drawable/ic_favorite"
-        app:tint="@android:color/holo_red_dark"
-        android:contentDescription="@string/action_favorite_desc" />
+        app:tint="@android:color/holo_red_dark" />
 </RelativeLayout>
