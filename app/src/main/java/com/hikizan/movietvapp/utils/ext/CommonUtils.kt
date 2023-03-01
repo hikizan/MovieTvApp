@@ -15,10 +15,6 @@ fun MultiStateView.showLoadingState() {
     viewState = MultiStateView.ViewState.LOADING
 }
 
-fun MultiStateView.showEmptyState() {
-    viewState = MultiStateView.ViewState.EMPTY
-}
-
 fun MultiStateView.showErrorState(
     message: String? = null,
     action: Pair<String, (() -> Unit)>? = null
@@ -43,21 +39,3 @@ fun MultiStateView.showErrorState(
 
 fun Context.showToast(message: CharSequence) =
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-
-/*
-fun HikizanActivity.setupHikizanToolbar(
-    toolbarLayout: LayoutToolbarBinding,
-    title: String,
-    isChild: Boolean = false,
-    isFavoriteVisible: Boolean = false
-) {
-    with(toolbarLayout) {
-        setSupportActionBar(toolbar)
-        supportActionBar?.title = title.orEmptyString()
-        supportActionBar?.setDisplayHomeAsUpEnabled(isChild)
-        toolbar.setTitleTextColor(Color.WHITE)
-        if (isFavoriteVisible) {
-            imgFavorite.visibility = View.VISIBLE
-        }
-    }
-}*/

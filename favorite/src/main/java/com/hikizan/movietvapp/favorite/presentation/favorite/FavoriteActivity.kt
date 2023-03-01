@@ -1,25 +1,14 @@
 package com.hikizan.movietvapp.favorite.presentation.favorite
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hikizan.movietvapp.favorite.R.string
 import com.hikizan.movietvapp.core.base.HikizanActivity
+import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
+import com.hikizan.movietvapp.favorite.R.string
 import com.hikizan.movietvapp.favorite.databinding.ActivityFavoriteBinding
 import com.hikizan.movietvapp.favorite.presentation.favorite.adapter.FavoriteViewPagerAdapter
-import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
 
 class FavoriteActivity : HikizanActivity() {
-
-    companion object {
-
-        fun start(context: Context) {
-            context.startActivity(
-                Intent(context, FavoriteActivity::class.java)
-            )
-        }
-    }
 
     private var _binding: ActivityFavoriteBinding? = null
     private val binding get() = _binding

@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.core.base.HikizanFragment
 import com.hikizan.movietvapp.core.data.movietv.Resource
-import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
 import com.hikizan.movietvapp.core.presentation.tv.adapter.TvShowAdapter
+import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
 import com.hikizan.movietvapp.utils.ext.showDefaultState
 import com.hikizan.movietvapp.utils.ext.showErrorState
 import com.hikizan.movietvapp.utils.ext.showLoadingState
-import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -45,9 +44,6 @@ class TvshowFragment : HikizanFragment() {
     }
 
     override fun initUI() {
-        /*binding?.apply {
-            msvTv.showEmptyState()
-        }*/
 
         binding?.rvTv?.apply {
             layoutManager = LinearLayoutManager(context)
@@ -56,7 +52,6 @@ class TvshowFragment : HikizanFragment() {
         }
 
         tvShowAdapter.onItemClick = { selectData ->
-            context?.showToast(selectData.name)
             DetailTvShowsActivity.start(requireContext(), selectData)
         }
     }
@@ -84,7 +79,6 @@ class TvshowFragment : HikizanFragment() {
                             msvTv.showErrorState(
                                 message = tvShows.message ?: getString(R.string.message_error_state),
                                 action = Pair(getString(R.string.action_retry)) {
-//                                    context?.showToast(tvShows.message.toString())
                                     tvShowViewModel.getTvShows()
                                 }
                             )
