@@ -10,12 +10,14 @@
     <string name="title_movie">Movie</string>
     <string name="title_tv">Tv Show</string>
     <string name="title_app">MovieTv App</string>
+    <string name="title_favorite">Favorite</string>
 
     <string name="message_error_state">Whoops! Something went wrong</string>
     <string name="message_empty_state">No Results Found</string>
+    <string name="message_add_favorite">Add %s to favorite</string>
+    <string name="message_remove_favorite">Remove %s from favorite</string>
 
     <string name="action_retry">Retry</string>
     <string name="action_favorite_desc">Favorite Movie and TvShow</string>
-    <string name="title_favorite">Favorite</string>
 
 </resources>

@@ -2,7 +2,6 @@ package com.hikizan.movietvapp.presentation.main
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
@@ -64,13 +63,8 @@ class MainActivity : HikizanActivity() {
         binding?.apply {
             fabFavorite.setOnClickListener {
                 try {
-                    //                com.hikizan.movietvapp.favorite.presentation.favorite.favorite.FavoriteActivity.start(this@MainActivity)
-                    /*val favoriteUri = Uri.parse("movietvapp://favorite")
-                    startActivity(Intent(Intent.ACTION_VIEW, favoriteUri))*/
-
                     val moveToFavoritePage = Intent()
                     moveToFavoritePage.setClassName(this@MainActivity, "com.hikizan.movietvapp.favorite.presentation.favorite.FavoriteActivity")
-//                moveToFavoritePage.putExtra("ExtraInt", 3) // Test intent for Dynamic feature
                     startActivity(moveToFavoritePage)
                 } catch (e: Exception) {
                     this@MainActivity.showToast(e.toString())

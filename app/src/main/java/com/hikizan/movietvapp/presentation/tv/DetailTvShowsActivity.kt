@@ -2,6 +2,7 @@ package com.hikizan.movietvapp.presentation.tv
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build.VERSION
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -13,6 +14,7 @@ import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.orEmptyString
 import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
+import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,7 +49,11 @@ class DetailTvShowsActivity : HikizanActivity() {
     }
 
     override fun initIntent() {
-        tvShowItem = intent.getParcelableExtra(BundleKeys.TV_SHOW_EXTRA_DATA)
+        tvShowItem = if (VERSION.SDK_INT >= 33) {
+            intent.getParcelableExtra(BundleKeys.TV_SHOW_EXTRA_DATA, TvShowItem::class.java)
+        } else {
+            intent.getParcelableExtra(BundleKeys.TV_SHOW_EXTRA_DATA)
+        }
     }
 
     override fun initUI() {
@@ -80,6 +86,13 @@ class DetailTvShowsActivity : HikizanActivity() {
                 isFavorite = !isFavorite
                 tvShowItem?.let { dataTvShow ->
                     tvShowViewModel.setFavoriteTvShow(dataTvShow, isFavorite)
+                    this@DetailTvShowsActivity.showToast(
+                        if (isFavorite) {
+                            getString(R.string.message_add_favorite, dataTvShow.name)
+                        } else {
+                            getString(R.string.message_remove_favorite, dataTvShow.name)
+                        }
+                    )
                 }
                 setFavoriteStatus(isFavorite)
             }

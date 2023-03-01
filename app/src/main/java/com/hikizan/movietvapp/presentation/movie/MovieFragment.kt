@@ -8,12 +8,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
 import com.hikizan.movietvapp.core.base.HikizanFragment
 import com.hikizan.movietvapp.core.data.movietv.Resource
-import com.hikizan.movietvapp.databinding.FragmentMovieBinding
 import com.hikizan.movietvapp.core.presentation.movie.adapter.MovieAdapter
+import com.hikizan.movietvapp.databinding.FragmentMovieBinding
 import com.hikizan.movietvapp.utils.ext.showDefaultState
 import com.hikizan.movietvapp.utils.ext.showErrorState
 import com.hikizan.movietvapp.utils.ext.showLoadingState
-import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,14 +47,6 @@ class MovieFragment : HikizanFragment() {
     }
 
     override fun initUI() {
-        /*binding?.apply {
-            msvMovie.showErrorState(
-                message = getString(R.string.message_error_state),
-                action = Pair(getString(R.string.action_retry)) {
-                    loadingState()
-                }
-            )
-        }*/
 
         binding?.rvMovie?.apply {
             layoutManager = LinearLayoutManager(context)
@@ -64,7 +55,6 @@ class MovieFragment : HikizanFragment() {
         }
 
         movieAdapter.onItemClick = { selectData ->
-            context?.showToast(selectData.title)
             DetailMovieActivity.start(requireContext(), selectData)
         }
     }
