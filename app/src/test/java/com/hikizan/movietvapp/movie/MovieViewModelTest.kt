@@ -1,21 +1,47 @@
-package com.hikizan.movietvapp.core.domain.movietv
+package com.hikizan.movietvapp.movie
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.hikizan.movietvapp.core.data.movietv.Resource
+import com.hikizan.movietvapp.core.domain.movietv.MovieTvUseCase
 import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
-import com.hikizan.movietvapp.core.domain.movietv.repositoryimpl.MovieTvRepositoryImpl
+import com.hikizan.movietvapp.viewmodel.MovieViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.test.resetMain
+import kotlinx.coroutines.test.setMain
 import org.junit.*
-import org.junit.runner.*
-import org.mockito.*
-import org.mockito.Mockito.*
-import org.mockito.junit.*
+import org.mockito.Mockito
 
-@RunWith(MockitoJUnitRunner::class)
-class MovieTvUseCaseTest {
+@ExperimentalCoroutinesApi
+class MovieViewModelTest {
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var movieTvUseCase: MovieTvUseCase
+    @Before
+    fun setup() {
+        Dispatchers.setMain(Dispatchers.Unconfined)
+    }
 
-    @Mock private lateinit var movieTvRepository: MovieTvRepositoryImpl
+    @After
+    fun tearDown() {
+        Dispatchers.resetMain()
+    }
+
+    @Test
+    fun `get movies from api`() {
+        val movieUseCase = Mockito.mock(MovieTvUseCase::class.java)
+        val listMovieFlow =  flowOf(Resource.Success(dummyMovies))
+
+        Mockito.`when`(movieUseCase.getMovies())
+            .thenReturn(listMovieFlow)
+        val movieViewModel = MovieViewModel(movieUseCase)
+        val result = movieViewModel.getMovies()
+
+        Mockito.verify(movieUseCase, Mockito.atLeastOnce()).getMovies()
+        Mockito.verifyNoMoreInteractions(movieUseCase)
+        Assert.assertNotNull(result)
+    }
 
     private val dummyMovies = listOf<MovieItem>(
         MovieItem(
@@ -45,20 +71,4 @@ class MovieTvUseCaseTest {
             isFavorite = true
         )
     )
-
-    @Before
-    fun setup() {
-        movieTvUseCase = MovieTvInteractor(movieTvRepository)
-        val moviesFlow = flowOf(Resource.Success(dummyMovies))
-
-        `when`(movieTvRepository.getMovies()).thenReturn(moviesFlow)
-    }
-
-    @Test fun `should get movies from repository`() {
-        val movies = movieTvUseCase.getMovies()
-
-        verify(movieTvRepository).getMovies()
-        verifyNoMoreInteractions(movieTvRepository)
-        Assert.assertNotNull(movies)
-    }
 }
