@@ -1,6 +1,5 @@
 package com.hikizan.movietvapp.core.data.movietv.local.model.entity
 
-import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,7 +7,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "movieItem")
 data class MovieItemEntity(
     @PrimaryKey
-    @NonNull
     @ColumnInfo(name = "movieId")
     var movieId: Int,
 

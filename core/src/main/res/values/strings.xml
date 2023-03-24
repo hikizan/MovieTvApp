@@ -8,4 +8,6 @@
     <string name="message_empty_state">No Results Found</string>
 
     <string name="action_retry">Retry</string>
+    <string name="label_sample_item_title">Sample of title text</string>
+    <string name="label_sample_item_overview">Sample of item overview text</string>
 </resources>
