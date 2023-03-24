@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:shimmer_auto_start="true">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lavHikizanLoading"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/hikizan_anim_loading" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <include layout="@layout/item_movietv_list_placeholder" />
+            <include layout="@layout/item_movietv_list_placeholder" />
+            <include layout="@layout/item_movietv_list_placeholder" />
+            <include layout="@layout/item_movietv_list_placeholder" />
+            <include layout="@layout/item_movietv_list_placeholder" />
+        </LinearLayout>
+    </ScrollView>
+
+</com.facebook.shimmer.ShimmerFrameLayout>
