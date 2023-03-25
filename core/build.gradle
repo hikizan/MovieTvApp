@@ -23,11 +23,13 @@ android {
 
     buildTypes {
         debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"29a52db2518c615904a32772949d3ca4\""
         }
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
             buildConfigField "String", "API_KEY", "\"29a52db2518c615904a32772949d3ca4\""
@@ -46,6 +48,10 @@ android {
 }
 
 dependencies {
+
+    //SQL Cipher
+    implementation "net.zetetic:android-database-sqlcipher:4.4.0"
+    implementation "androidx.sqlite:sqlite-ktx:2.3.0"
 
     //Room
     implementation "androidx.room:room-runtime:2.5.0"
@@ -69,4 +75,13 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    /*constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
+    }*/
 }
