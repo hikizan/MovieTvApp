@@ -7,18 +7,18 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.core.base.HikizanActivity
-import com.hikizan.movietvapp.databinding.ActivityDetailTvShowsBinding
+import com.hikizan.movietvapp.base.BaseActivity
 import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.orEmptyString
 import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
+import com.hikizan.movietvapp.databinding.ActivityDetailTvShowsBinding
 import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailTvShowsActivity : HikizanActivity() {
+class DetailTvShowsActivity : BaseActivity<ActivityDetailTvShowsBinding>() {
 
     companion object {
         fun start(context: Context, tvShowItem: TvShowItem) {
@@ -30,18 +30,22 @@ class DetailTvShowsActivity : HikizanActivity() {
         }
     }
 
-    private var _binding: ActivityDetailTvShowsBinding? = null
-    private val binding get() = _binding
+    /*private var _binding: ActivityDetailTvShowsBinding? = null
+    private val binding get() = _binding*/
 
     private val tvShowViewModel: TvShowViewModel by viewModel()
 
     private var tvShowItem: TvShowItem? = null
     private var isFavorite: Boolean = false
 
+    override fun initViewBinding(): ActivityDetailTvShowsBinding {
+        return ActivityDetailTvShowsBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityDetailTvShowsBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        /*_binding = ActivityDetailTvShowsBinding.inflate(layoutInflater)
+        setContentView(binding?.root)*/
 
         initIntent()
         initUI()
@@ -108,11 +112,6 @@ class DetailTvShowsActivity : HikizanActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     private fun setFavoriteStatus(isFavorite: Boolean) = binding?.apply {
