@@ -27,7 +27,7 @@ val databaseModule = module {
         val factory = SupportFactory(passphrase)
         Room.databaseBuilder(
             androidContext(),
-            MovieTvDatabase::class.java, "MovieTv.db"
+            MovieTvDatabase::class.java, "MovieTvDB"
         ).fallbackToDestructiveMigration()
             .openHelperFactory(factory)
             .build()

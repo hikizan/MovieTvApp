@@ -14,6 +14,7 @@
     </dist:module>
 
     <application>
+<!--        android:extractNativeLibs="true">-->
         <activity
             android:name=".presentation.favorite.FavoriteActivity"
             android:exported="false">

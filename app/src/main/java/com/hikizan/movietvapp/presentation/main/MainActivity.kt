@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.core.base.HikizanActivity
+import com.hikizan.movietvapp.base.HikizanActivity
 import com.hikizan.movietvapp.core.utils.ext.showToast
 import com.hikizan.movietvapp.databinding.ActivityMainBinding
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter
 
-class MainActivity : HikizanActivity() {
+class MainActivity : HikizanActivity<ActivityMainBinding>() {
 
     companion object {
         fun start(context: Context) {
@@ -20,9 +20,6 @@ class MainActivity : HikizanActivity() {
         }
     }
 
-    private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding
-
     private val viewPagerAdapter: SectionPagerAdapter by lazy {
         SectionPagerAdapter(
             supportFragmentManager,
@@ -30,10 +27,14 @@ class MainActivity : HikizanActivity() {
         )
     }
 
+    override fun initViewBinding(): ActivityMainBinding {
+        return ActivityMainBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
+        /*_binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding!!.root)*/
 
         initUI()
         initAction()
@@ -78,10 +79,5 @@ class MainActivity : HikizanActivity() {
     }
 
     override fun initObservers() {
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

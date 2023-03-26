@@ -2,16 +2,16 @@ package com.hikizan.movietvapp.favorite.presentation.favorite
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hikizan.movietvapp.core.base.HikizanActivity
-import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
+import com.hikizan.movietvapp.favorite.utils.ext.setupBaseToolbar
 import com.hikizan.movietvapp.favorite.R.string
+import com.hikizan.movietvapp.favorite.base.FavoriteBaseActivity
 import com.hikizan.movietvapp.favorite.databinding.ActivityFavoriteBinding
 import com.hikizan.movietvapp.favorite.presentation.favorite.adapter.FavoriteViewPagerAdapter
 
-class FavoriteActivity : HikizanActivity() {
+class FavoriteActivity : FavoriteBaseActivity<ActivityFavoriteBinding>() {
 
-    private var _binding: ActivityFavoriteBinding? = null
-    private val binding get() = _binding
+//    private var _binding: ActivityFavoriteBinding? = null
+//    private val binding get() = _binding
 
     private val viewPagerAdapter: FavoriteViewPagerAdapter by lazy {
         FavoriteViewPagerAdapter(
@@ -20,10 +20,14 @@ class FavoriteActivity : HikizanActivity() {
         )
     }
 
+    override fun initViewBinding(): ActivityFavoriteBinding {
+        return ActivityFavoriteBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityFavoriteBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+//        _binding = ActivityFavoriteBinding.inflate(layoutInflater)
+//        setContentView(binding?.root)
 
         initUI()
         initAction()
@@ -34,7 +38,7 @@ class FavoriteActivity : HikizanActivity() {
 
     override fun initUI() {
         binding?.apply {
-            setupHikizanToolbar(
+            setupBaseToolbar(
                 toolbarLayout = layoutToolbarFavorite,
                 title = getString(string.title_favorite_list_page),
                 isChild = true
@@ -67,10 +71,5 @@ class FavoriteActivity : HikizanActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressedDispatcher.onBackPressed()
         return true
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 }

@@ -17,7 +17,7 @@ class MovieTvUseCaseTest {
 
     @Mock private lateinit var movieTvRepository: MovieTvRepositoryImpl
 
-    private val dummyMovies = listOf<MovieItem>(
+    private val dummyMovies = listOf(
         MovieItem(
             id = 1077280,
             backdropPath = "/pxJbfnMIQQxCrdeLD0zQnWr6ouL.jpg",

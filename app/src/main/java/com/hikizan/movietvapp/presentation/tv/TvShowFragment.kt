@@ -1,12 +1,10 @@
 package com.hikizan.movietvapp.presentation.tv
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.core.base.HikizanFragment
+import com.hikizan.movietvapp.base.HikizanFragment
 import com.hikizan.movietvapp.core.data.movietv.Resource
 import com.hikizan.movietvapp.core.presentation.tv.adapter.TvShowAdapter
 import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
@@ -16,21 +14,14 @@ import com.hikizan.movietvapp.utils.ext.showLoadingState
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TvshowFragment : HikizanFragment() {
-
-    private var _binding: FragmentTvshowBinding? = null
-    private val binding get() = _binding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentTvshowBinding.inflate(layoutInflater, container, false)
-        return binding?.root
-    }
+class TvshowFragment : HikizanFragment<FragmentTvshowBinding>() {
 
     private val tvShowViewModel: TvShowViewModel by viewModel()
     private val tvShowAdapter = TvShowAdapter()
+
+    override fun initViewBinding(): FragmentTvshowBinding {
+        return FragmentTvshowBinding.inflate(layoutInflater)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -89,8 +80,4 @@ class TvshowFragment : HikizanFragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
