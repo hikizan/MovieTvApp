@@ -12,8 +12,8 @@ import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.orEmptyString
-import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.databinding.ActivityDetailTvShowsBinding
+import com.hikizan.movietvapp.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -51,6 +51,7 @@ class DetailTvShowsActivity : HikizanActivity<ActivityDetailTvShowsBinding>() {
         tvShowItem = if (VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(BundleKeys.TV_SHOW_EXTRA_DATA, TvShowItem::class.java)
         } else {
+            @Suppress("DEPRECATION")
             intent.getParcelableExtra(BundleKeys.TV_SHOW_EXTRA_DATA)
         }
     }

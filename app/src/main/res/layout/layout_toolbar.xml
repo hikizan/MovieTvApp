@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.appbar.MaterialToolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -9,7 +10,8 @@
     android:minHeight="?attr/actionBarSize"
     app:navigationIcon="@drawable/ic_navigation_back"
     app:contentInsetStartWithNavigation="0dp"
-    app:titleTextAppearance="@style/HikizanTextTitle">
+    app:titleTextAppearance="@style/HikizanTextTitle"
+    tools:ignore="Overdraw">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgFavorite"

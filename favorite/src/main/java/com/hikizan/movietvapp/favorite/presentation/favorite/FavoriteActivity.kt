@@ -2,7 +2,7 @@ package com.hikizan.movietvapp.favorite.presentation.favorite
 
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
-import com.hikizan.movietvapp.favorite.utils.ext.setupBaseToolbar
+import com.hikizan.movietvapp.favorite.utils.ext.setupFavoriteToolbar
 import com.hikizan.movietvapp.favorite.R.string
 import com.hikizan.movietvapp.favorite.base.FavoriteBaseActivity
 import com.hikizan.movietvapp.favorite.databinding.ActivityFavoriteBinding
@@ -10,8 +10,6 @@ import com.hikizan.movietvapp.favorite.presentation.favorite.adapter.FavoriteVie
 
 class FavoriteActivity : FavoriteBaseActivity<ActivityFavoriteBinding>() {
 
-//    private var _binding: ActivityFavoriteBinding? = null
-//    private val binding get() = _binding
 
     private val viewPagerAdapter: FavoriteViewPagerAdapter by lazy {
         FavoriteViewPagerAdapter(
@@ -26,8 +24,6 @@ class FavoriteActivity : FavoriteBaseActivity<ActivityFavoriteBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        _binding = ActivityFavoriteBinding.inflate(layoutInflater)
-//        setContentView(binding?.root)
 
         initUI()
         initAction()
@@ -38,7 +34,7 @@ class FavoriteActivity : FavoriteBaseActivity<ActivityFavoriteBinding>() {
 
     override fun initUI() {
         binding?.apply {
-            setupBaseToolbar(
+            setupFavoriteToolbar(
                 toolbarLayout = layoutToolbarFavorite,
                 title = getString(string.title_favorite_list_page),
                 isChild = true

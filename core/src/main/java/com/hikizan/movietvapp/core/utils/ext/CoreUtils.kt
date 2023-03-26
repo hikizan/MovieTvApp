@@ -1,14 +1,10 @@
 package com.hikizan.movietvapp.core.utils.ext
 
 import android.content.Context
-import android.graphics.Color
-import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.hikizan.movietvapp.core.databinding.LayoutToolbarBinding
 import com.kennyc.view.MultiStateView
 
-fun AppCompatActivity.setupHikizanToolbar(
+/*fun AppCompatActivity.setupHikizanToolbar(
     toolbarLayout: LayoutToolbarBinding,
     title: String,
     isChild: Boolean = false,
@@ -23,7 +19,7 @@ fun AppCompatActivity.setupHikizanToolbar(
             imgFavorite.visibility = View.VISIBLE
         }
     }
-}
+}*/
 
 fun MultiStateView.showDefaultState() {
     viewState = MultiStateView.ViewState.CONTENT
