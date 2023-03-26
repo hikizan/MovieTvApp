@@ -12,9 +12,9 @@ import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.orEmptyString
-import com.hikizan.movietvapp.core.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.core.utils.ext.showToast
 import com.hikizan.movietvapp.databinding.ActivityDetailMovieBinding
+import com.hikizan.movietvapp.utils.ext.setupHikizanToolbar
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -51,6 +51,7 @@ class DetailMovieActivity : HikizanActivity<ActivityDetailMovieBinding>() {
         movieItem = if (VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra(BundleKeys.MOVIE_EXTRA_DATA, MovieItem::class.java)
         } else {
+            @Suppress("DEPRECATION")
             intent.getParcelableExtra(BundleKeys.MOVIE_EXTRA_DATA)
         }
     }
