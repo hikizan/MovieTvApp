@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.BaseActivity
+import com.hikizan.movietvapp.base.HikizanActivity
 import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
@@ -18,7 +18,7 @@ import com.hikizan.movietvapp.databinding.ActivityDetailMovieBinding
 import com.hikizan.movietvapp.viewmodel.MovieViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailMovieActivity : BaseActivity<ActivityDetailMovieBinding>() {
+class DetailMovieActivity : HikizanActivity<ActivityDetailMovieBinding>() {
 
     companion object {
         fun start(context: Context, movieItem: MovieItem) {
@@ -29,9 +29,6 @@ class DetailMovieActivity : BaseActivity<ActivityDetailMovieBinding>() {
             )
         }
     }
-
-    /*private var _binding: ActivityDetailMovieBinding? = null
-    private val binding get() = _binding*/
 
     private val movieViewModel: MovieViewModel by viewModel()
 

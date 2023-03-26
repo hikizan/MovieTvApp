@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.BaseFragment
+import com.hikizan.movietvapp.base.HikizanFragment
 import com.hikizan.movietvapp.core.data.movietv.Resource
 import com.hikizan.movietvapp.core.presentation.tv.adapter.TvShowAdapter
 import com.hikizan.movietvapp.databinding.FragmentTvshowBinding
@@ -14,10 +14,7 @@ import com.hikizan.movietvapp.utils.ext.showLoadingState
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TvshowFragment : BaseFragment<FragmentTvshowBinding>() {
-
-    /*private var _binding: FragmentTvshowBinding? = null
-    private val binding get() = _binding*/
+class TvshowFragment : HikizanFragment<FragmentTvshowBinding>() {
 
     private val tvShowViewModel: TvShowViewModel by viewModel()
     private val tvShowAdapter = TvShowAdapter()

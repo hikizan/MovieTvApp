@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 
-abstract class BaseActivity<VB: ViewBinding> : AppCompatActivity() {
+abstract class HikizanActivity<VB: ViewBinding> : AppCompatActivity() {
     protected var binding: VB? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -5,12 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.BaseActivity
+import com.hikizan.movietvapp.base.HikizanActivity
 import com.hikizan.movietvapp.core.utils.ext.showToast
 import com.hikizan.movietvapp.databinding.ActivityMainBinding
 import com.hikizan.movietvapp.presentation.main.adapter.SectionPagerAdapter
 
-class MainActivity : BaseActivity<ActivityMainBinding>() {
+class MainActivity : HikizanActivity<ActivityMainBinding>() {
 
     companion object {
         fun start(context: Context) {
@@ -19,9 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
             )
         }
     }
-
-    /*private var _binding: ActivityMainBinding? = null
-    private val binding get() = _binding*/
 
     private val viewPagerAdapter: SectionPagerAdapter by lazy {
         SectionPagerAdapter(

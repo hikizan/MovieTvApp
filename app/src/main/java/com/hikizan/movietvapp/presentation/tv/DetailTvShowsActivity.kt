@@ -7,7 +7,7 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.hikizan.movietvapp.R
-import com.hikizan.movietvapp.base.BaseActivity
+import com.hikizan.movietvapp.base.HikizanActivity
 import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
 import com.hikizan.movietvapp.core.utils.constants.AppConstants
 import com.hikizan.movietvapp.core.utils.constants.BundleKeys
@@ -18,7 +18,7 @@ import com.hikizan.movietvapp.utils.ext.showToast
 import com.hikizan.movietvapp.viewmodel.TvShowViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailTvShowsActivity : BaseActivity<ActivityDetailTvShowsBinding>() {
+class DetailTvShowsActivity : HikizanActivity<ActivityDetailTvShowsBinding>() {
 
     companion object {
         fun start(context: Context, tvShowItem: TvShowItem) {
@@ -29,9 +29,6 @@ class DetailTvShowsActivity : BaseActivity<ActivityDetailTvShowsBinding>() {
             )
         }
     }
-
-    /*private var _binding: ActivityDetailTvShowsBinding? = null
-    private val binding get() = _binding*/
 
     private val tvShowViewModel: TvShowViewModel by viewModel()
 
@@ -44,8 +41,6 @@ class DetailTvShowsActivity : BaseActivity<ActivityDetailTvShowsBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*_binding = ActivityDetailTvShowsBinding.inflate(layoutInflater)
-        setContentView(binding?.root)*/
 
         initIntent()
         initUI()

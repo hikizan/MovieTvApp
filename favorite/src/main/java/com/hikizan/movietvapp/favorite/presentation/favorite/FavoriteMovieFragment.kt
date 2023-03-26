@@ -9,6 +9,7 @@ import com.hikizan.movietvapp.core.utils.constants.BundleKeys
 import com.hikizan.movietvapp.core.utils.ext.showDefaultState
 import com.hikizan.movietvapp.core.utils.ext.showEmptyState
 import com.hikizan.movietvapp.core.utils.ext.showToast
+import com.hikizan.movietvapp.favorite.R
 import com.hikizan.movietvapp.favorite.base.FavoriteBaseFragment
 import com.hikizan.movietvapp.favorite.databinding.FragmentFavoriteMovieBinding
 import com.hikizan.movietvapp.favorite.di.featuremodule.favoriteModule
@@ -54,7 +55,7 @@ class FavoriteMovieFragment : FavoriteBaseFragment<FragmentFavoriteMovieBinding>
             try {
                 val moveToDetailPage = Intent(
                     requireContext(),
-                    Class.forName("com.hikizan.movietvapp.presentation.movie.DetailMovieActivity")
+                    Class.forName(getString(R.string.module_app_detail_movie))
                 )
                 moveToDetailPage.putExtra(BundleKeys.MOVIE_EXTRA_DATA, selectData)
                 startActivity(moveToDetailPage)

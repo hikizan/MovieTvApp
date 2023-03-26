@@ -8,7 +8,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.hikizan.movietvapp.core.R
-import com.hikizan.movietvapp.core.base.HikizanActivity
 import com.hikizan.movietvapp.core.databinding.LayoutToolbarBinding
 import com.kennyc.view.MultiStateView
 
