@@ -10,14 +10,14 @@ import com.hikizan.movietvapp.core.utils.ext.showDefaultState
 import com.hikizan.movietvapp.core.utils.ext.showEmptyState
 import com.hikizan.movietvapp.core.utils.ext.showToast
 import com.hikizan.movietvapp.favorite.R
-import com.hikizan.movietvapp.favorite.base.BaseFragment
+import com.hikizan.movietvapp.favorite.base.FavoriteBaseFragment
 import com.hikizan.movietvapp.favorite.databinding.FragmentFavoriteTvShowBinding
 import com.hikizan.movietvapp.favorite.di.featuremodule.favoriteModule
 import com.hikizan.movietvapp.favorite.viewmodel.FavoriteViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
 
-class FavoriteTvShowFragment : BaseFragment<FragmentFavoriteTvShowBinding>() {
+class FavoriteTvShowFragment : FavoriteBaseFragment<FragmentFavoriteTvShowBinding>() {
 
     private val favoriteViewModel: FavoriteViewModel by viewModel()
 

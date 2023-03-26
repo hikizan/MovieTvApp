@@ -1,4 +1,4 @@
-package com.hikizan.movietvapp.favorite.base
+package com.hikizan.movietvapp.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

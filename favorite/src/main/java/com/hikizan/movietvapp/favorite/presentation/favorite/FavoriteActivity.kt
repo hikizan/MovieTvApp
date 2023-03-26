@@ -4,11 +4,11 @@ import android.os.Bundle
 import com.google.android.material.tabs.TabLayoutMediator
 import com.hikizan.movietvapp.favorite.utils.ext.setupBaseToolbar
 import com.hikizan.movietvapp.favorite.R.string
-import com.hikizan.movietvapp.favorite.base.BaseActivity
+import com.hikizan.movietvapp.favorite.base.FavoriteBaseActivity
 import com.hikizan.movietvapp.favorite.databinding.ActivityFavoriteBinding
 import com.hikizan.movietvapp.favorite.presentation.favorite.adapter.FavoriteViewPagerAdapter
 
-class FavoriteActivity : BaseActivity<ActivityFavoriteBinding>() {
+class FavoriteActivity : FavoriteBaseActivity<ActivityFavoriteBinding>() {
 
 //    private var _binding: ActivityFavoriteBinding? = null
 //    private val binding get() = _binding
