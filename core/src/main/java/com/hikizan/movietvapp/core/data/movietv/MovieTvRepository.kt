@@ -5,18 +5,18 @@ import com.hikizan.movietvapp.core.data.movietv.remote.RemoteDataSource
 import com.hikizan.movietvapp.core.data.movietv.remote.model.response.MovieItemResponse
 import com.hikizan.movietvapp.core.data.movietv.remote.model.response.TvShowItemResponse
 import com.hikizan.movietvapp.core.data.movietv.remote.network.ApiResponseResult
-import com.hikizan.movietvapp.core.domain.movietv.mapper.*
-import com.hikizan.movietvapp.core.domain.movietv.model.response.*
+import com.hikizan.movietvapp.core.domain.movietv.mapper.mapToDomain
+import com.hikizan.movietvapp.core.domain.movietv.mapper.mapToEntities
+import com.hikizan.movietvapp.core.domain.movietv.model.response.MovieItem
+import com.hikizan.movietvapp.core.domain.movietv.model.response.TvShowItem
 import com.hikizan.movietvapp.core.domain.movietv.repositoryimpl.MovieTvRepositoryImpl
-import com.hikizan.movietvapp.core.utils.AppExecutors
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.util.concurrent.Executors
 
 class MovieTvRepository(
     private val remoteDataSource: RemoteDataSource,
-    private val localDataSource: LocalDataSource,
-    private val appExecutors: AppExecutors
+    private val localDataSource: LocalDataSource
 ) : MovieTvRepositoryImpl {
 
     override fun getMovies(): Flow<Resource<List<MovieItem>>> =
@@ -84,7 +84,7 @@ class MovieTvRepository(
     }
 
     override fun setFavoriteTvShow(tvShowItem: TvShowItem, state: Boolean) {
-        appExecutors.diskIO().execute {
+        Executors.newSingleThreadExecutor().execute {
             localDataSource.setFavoriteTvShow(
                 tvShowItem.mapToEntities(),
                 state
