@@ -1,5 +1,6 @@
 package com.hikizan.movietvapp.core.presentation.tv.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class TvShowAdapter : RecyclerView.Adapter<ListViewHolder>() {
     private var listData = ArrayList<TvShowItem>()
     var onItemClick: ((TvShowItem) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<TvShowItem>?) {
         if (newListData == null) return
         listData.clear()

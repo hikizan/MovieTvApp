@@ -41,8 +41,6 @@ class DetailMovieActivity : HikizanActivity<ActivityDetailMovieBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*_binding = ActivityDetailMovieBinding.inflate(layoutInflater)
-        setContentView(binding?.root)*/
 
         initIntent()
         initUI()

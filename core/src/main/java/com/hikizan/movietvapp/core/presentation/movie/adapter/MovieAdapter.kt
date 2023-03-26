@@ -1,5 +1,6 @@
 package com.hikizan.movietvapp.core.presentation.movie.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ class MovieAdapter : RecyclerView.Adapter<ListViewHolder>() {
     private var listData = ArrayList<MovieItem>()
     var onItemClick: ((MovieItem) -> Unit)? = null
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setData(newListData: List<MovieItem>?) {
         if (newListData == null) return
         listData.clear()
