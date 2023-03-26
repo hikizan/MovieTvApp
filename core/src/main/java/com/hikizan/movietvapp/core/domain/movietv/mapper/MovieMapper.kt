@@ -21,21 +21,6 @@ fun MovieItemResponse.mapToEntities() =
         isFavorite = false
     )
 
-fun MovieItemResponse.mapToDomain() =
-    MovieItem(
-        id = id.orZero(),
-        originalTitle = originalTitle.orEmpty(),
-        backdropPath = backdropPath.orEmpty(),
-        overview = overview.orEmpty(),
-        releaseDate = releaseDate.orEmpty(),
-        popularity = popularity.orZero(),
-        voteAverage = voteAverage.orZero(),
-        title = title.orEmpty(),
-        voteCount = voteCount.orZero(),
-        posterPath = posterPath.orEmpty(),
-        isFavorite = false
-    )
-
 fun MovieItemEntity.mapToDomain() =
     MovieItem(
         id = movieId.orZero(),

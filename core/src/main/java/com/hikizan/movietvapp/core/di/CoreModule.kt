@@ -8,7 +8,6 @@ import com.hikizan.movietvapp.core.data.movietv.local.room.MovieTvDatabase
 import com.hikizan.movietvapp.core.data.movietv.remote.RemoteDataSource
 import com.hikizan.movietvapp.core.data.movietv.remote.network.MovieTvApiClient
 import com.hikizan.movietvapp.core.domain.movietv.repositoryimpl.MovieTvRepositoryImpl
-import com.hikizan.movietvapp.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
 import okhttp3.CertificatePinner
@@ -62,6 +61,5 @@ val networkModule = module {
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
-    factory { AppExecutors() }
-    single<MovieTvRepositoryImpl> { MovieTvRepository(get(), get(), get()) }
+    single<MovieTvRepositoryImpl> { MovieTvRepository(get(), get()) }
 }
